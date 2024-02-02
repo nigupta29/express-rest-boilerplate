@@ -3,8 +3,7 @@ import { getEnvValue } from "../utils/helperFunctions"
 
 const connectDB = async (): Promise<void> => {
   try {
-    const password = getEnvValue("DB_PASSWORD")
-    const mongoUrl = getEnvValue("MONGO_URL").replace("<password>", password)
+    const mongoUrl = getEnvValue("MONGO_URL")
 
     const conn = await connect(mongoUrl)
     console.dir(`Database connected at host : ${conn.connection.host}`)

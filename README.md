@@ -10,3 +10,40 @@ This is a repository for a REST API using Node, Express, Typescript & MongoDB.
 - Middlewares creation
 - Cookie based authentication
 - Create, Read, Update
+
+### Setup
+
+1. Prerequisites
+
+```
+NODE JS Version : 14.X.X
+```
+
+2. Clone the repository:
+
+```bash
+git clone https://github.com/nigupta29/ts-rest-api-with-auth.git
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Initialize Environment Variables
+
+Create `.env` file in root folder
+
+```
+PORT =
+NODE_ENV =
+MONGO_URL = mongodb+srv://...
+JWT_SECRET_KEY =
+```
+
+5. Run the server:
+
+```bash
+npm run dev
+```
