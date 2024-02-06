@@ -40,3 +40,12 @@ export const getNote = asyncHandler(async (req: Request, res: Response) => {
     note,
   })
 })
+
+export const deleteNote = asyncHandler(async (req: Request, res: Response) => {
+  const noteId = req.params.id
+  await Note.findByIdAndDelete(noteId)
+
+  res.status(204).json({
+    message: "Note deleted succesfully",
+  })
+})
