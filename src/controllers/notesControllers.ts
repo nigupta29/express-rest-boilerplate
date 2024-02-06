@@ -41,6 +41,18 @@ export const getNote = asyncHandler(async (req: Request, res: Response) => {
   })
 })
 
+export const updateNote = asyncHandler(async (req: Request, res: Response) => {
+  const noteId = req.params.id
+  const note = await Note.findByIdAndUpdate(noteId, req.body as TNotePostBody, {
+    new: true,
+    runValidators: true,
+  }).select("-__v -userId")
+
+  res.status(200).json({
+    note,
+  })
+})
+
 export const deleteNote = asyncHandler(async (req: Request, res: Response) => {
   const noteId = req.params.id
   await Note.findByIdAndDelete(noteId)
