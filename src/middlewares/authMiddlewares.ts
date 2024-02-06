@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express"
 import asyncHandler from "express-async-handler"
 import jwt from "jsonwebtoken"
+import { Types } from "mongoose"
+import Note from "../models/Note"
 import User from "../models/User"
 import { getEnvValue } from "../utils/helperFunctions"
 
@@ -33,3 +35,24 @@ export const protectRoute = asyncHandler(
     }
   }
 )
+
+export const checkNoteAccess = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+  noteId: string
+) => {
+  try {
+    const note = await Note.findById(noteId)
+    const currentUserId = req.user._id
+
+    if (note && currentUserId.equals(note.userId as Types.ObjectId)) {
+      next()
+    } else {
+      res.status(404)
+      throw new Error("Resource not found")
+    }
+  } catch (error) {
+    next(error)
+  }
+}

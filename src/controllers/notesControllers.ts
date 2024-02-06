@@ -31,3 +31,12 @@ export const getNotes = asyncHandler(async (req: Request, res: Response) => {
     notes,
   })
 })
+
+export const getNote = asyncHandler(async (req: Request, res: Response) => {
+  const noteId = req.params.id
+  const note = await Note.findById(noteId).select("-__v -userId")
+
+  res.status(200).json({
+    note,
+  })
+})
