@@ -1,4 +1,6 @@
+import compression from "compression"
 import cookieParser from "cookie-parser"
+import cors from "cors"
 import { config } from "dotenv"
 import express from "express"
 import morgan from "morgan"
@@ -16,6 +18,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(compression())
+app.use(cors())
 if (getEnvValue("NODE_ENV") === "development") {
   app.use(morgan("dev"))
 }
