@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import asyncHandler from "express-async-handler"
-import Note from "../models/Note"
+import Note from "../models/note"
 
 type TNotePostBody = {
   title: string

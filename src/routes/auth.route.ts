@@ -3,8 +3,8 @@ import {
   loginUser,
   logoutUser,
   registerUser,
-} from "../controllers/authControllers"
-import { protectRoute } from "../middlewares/authMiddlewares"
+} from "../controllers/auth.controller"
+import { protectRoute } from "../middlewares/auth.middleware"
 const router = Router()
 
 router.post("/login", loginUser)

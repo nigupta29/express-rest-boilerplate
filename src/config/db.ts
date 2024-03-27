@@ -1,5 +1,5 @@
 import { connect } from "mongoose"
-import { getEnvValue } from "../utils/helperFunctions"
+import { getEnvValue } from "../utils/helper-functions"
 
 const connectDB = async (): Promise<void> => {
   try {

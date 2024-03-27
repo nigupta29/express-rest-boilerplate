@@ -5,8 +5,8 @@ import {
   getNote,
   getNotes,
   updateNote,
-} from "../controllers/notesControllers"
-import { checkNoteAccess } from "../middlewares/authMiddlewares"
+} from "../controllers/notes.controller"
+import { checkNoteAccess } from "../middlewares/auth.middleware"
 const router = Router()
 
 router.route("/").get(getNotes).post(createNote)

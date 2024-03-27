@@ -1,7 +1,7 @@
 import { Response } from "express"
 import jwt from "jsonwebtoken"
 import { Types } from "mongoose"
-import { getEnvValue } from "./helperFunctions"
+import { getEnvValue } from "./helper-functions"
 
 const generateToken = (res: Response, userId: Types.ObjectId) => {
   const token = jwt.sign({ userId }, getEnvValue("JWT_SECRET_KEY"), {

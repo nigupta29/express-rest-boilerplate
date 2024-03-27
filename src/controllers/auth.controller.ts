@@ -1,12 +1,8 @@
 import { Request, Response } from "express"
 import asyncHandler from "express-async-handler"
-import User from "../models/User"
-import generateToken from "../utils/generateToken"
-import { hashPassword, matchPassword } from "../utils/helperFunctions"
-
-export const test = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "test" })
-})
+import User from "../models/user"
+import generateToken from "../utils/generate-token"
+import { hashPassword, matchPassword } from "../utils/helper-functions"
 
 type RegisterBody = {
   email: string

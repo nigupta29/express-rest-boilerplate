@@ -2,9 +2,9 @@ import { NextFunction, Request, Response } from "express"
 import asyncHandler from "express-async-handler"
 import jwt from "jsonwebtoken"
 import { Types } from "mongoose"
-import Note from "../models/Note"
-import User from "../models/User"
-import { getEnvValue } from "../utils/helperFunctions"
+import Note from "../models/note"
+import User from "../models/user"
+import { getEnvValue } from "../utils/helper-functions"
 
 type TDecodedObject = jwt.JwtPayload & {
   userId: string
