@@ -1,6 +1,6 @@
-# REST API in Typescript with JWT Auth
+# Express REST API Boilerplate with Cookie based Authentication
 
-This is a repository for a REST API using Node, Express, Typescript & MongoDB.
+A starter kit featuring Express.js, Mongoose, Typescipt and cookie-based authentication for building secure and scalable RESTful APIs.
 
 ### Features:
 

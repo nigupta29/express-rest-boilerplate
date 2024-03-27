@@ -1,8 +1,8 @@
 {
-  "name": "ts-rest-api-with-auth",
+  "name": "express-rest-boilerplate",
   "version": "1.0.0",
-  "description": "Express Rest API with Auth using Typescript",
-  "main": "index.js",
+  "description": "A starter kit featuring Express.js, Mongoose, Typescipt and cookie-based authentication for building secure and scalable RESTful APIs.",
+  "main": "./src/index.ts",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
