@@ -1,4 +1,6 @@
 import { NextFunction, Request, Response } from "express"
+import { Error } from "mongoose"
+import { ZodError } from "zod"
 
 export const notFound = (
   req: Request,
@@ -15,6 +17,10 @@ interface CustomError extends Error {
   kind?: string
 }
 
+function formatZodError(error: ZodError): string {
+  return error.errors.map((err) => err.message).join("\n")
+}
+
 export const errorHandler = (
   err: CustomError,
   req: Request,
@@ -24,9 +30,14 @@ export const errorHandler = (
   let statusCode: number = res.statusCode === 200 ? 500 : res.statusCode
   let message: string = err.message
 
-  if (err.name === "CastError" && err.kind === "ObjectId") {
+  if (err instanceof Error.CastError) {
     statusCode = 404
     message = "Resource not found"
+  }
+
+  if (err instanceof ZodError) {
+    statusCode = 400
+    message = formatZodError(err)
   }
 
   res.status(statusCode).json({
