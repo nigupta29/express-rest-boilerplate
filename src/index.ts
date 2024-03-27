@@ -22,6 +22,8 @@ app.use(compression())
 app.use(cors())
 if (getEnvValue("NODE_ENV") === "development") {
   app.use(morgan("dev"))
+} else {
+  app.use(morgan("combined"))
 }
 
 // Routes

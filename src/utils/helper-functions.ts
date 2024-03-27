@@ -1,4 +1,4 @@
-import { compare, genSalt, hash } from "bcryptjs"
+import { compare, hash } from "bcryptjs"
 
 export const getEnvValue = (value: string): string => {
   if (process.env[value]) return process.env[value] as string
@@ -13,7 +13,5 @@ export const matchPassword = async (
 }
 
 export const hashPassword = async (plainPassword: string): Promise<string> => {
-  const salt = await genSalt(10)
-  const hashedPwd = await hash(plainPassword, salt)
-  return hashedPwd
+  return await hash(plainPassword, 10)
 }
