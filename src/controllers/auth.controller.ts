@@ -3,16 +3,11 @@ import asyncHandler from "express-async-handler"
 import User from "../models/user"
 import generateToken from "../utils/generate-token"
 import { hashPassword, matchPassword } from "../utils/helper-functions"
-
-type RegisterBody = {
-  email: string
-  name: string
-  password: string
-}
+import { loginSchema, registerSchema } from "../utils/schemas"
 
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
-    const { name, email, password }: RegisterBody = req.body
+    const { name, email, password } = registerSchema.parse(req.body)
 
     const userExists = await User.findOne({ email })
     if (userExists) {
@@ -43,14 +38,8 @@ export const registerUser = asyncHandler(
   }
 )
 
-type LoginBody = {
-  email: string
-  password: string
-}
-
 export const loginUser = asyncHandler(async (req: Request, res: Response) => {
-  const { email, password }: LoginBody = req.body
-
+  const { email, password } = loginSchema.parse(req.body)
   const user = await User.findOne({ email })
 
   if (user && (await matchPassword(password, user.password))) {
